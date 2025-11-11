@@ -247,8 +247,9 @@ class InputData(BaseModel):
     svr_jdg_count: float
     svr_jdg_monthsincelastsettld: float
     svr_defaultamount: float
-    date_of_joining: datetime
-    CreatedOn: datetime
+    days_in_stage: float
+    date_of_joining: Optional[datetime] = None
+    CreatedOn: Optional[datetime] = None
 
 class ScoreModel:
     def __init__(self, model_path: str = None):
@@ -265,12 +266,24 @@ class ScoreModel:
 
     def preprocess_data(self, input_data: InputData):
         data = input_data.dict()
-        date_join = pd.to_datetime(data['date_of_joining'])
-        created_on = pd.to_datetime(data['CreatedOn'])
-        data['days_in_stage'] = (created_on - date_join).days
+
+        # Если days_in_stage пришёл — используем его
+        # Если нет — рассчитываем по датам
+        if data.get('days_in_stage') is not None:
+            pass  # уже есть
+        else:
+            if not data.get("date_of_joining"):
+                data["date_of_joining"] = datetime(2023, 1, 1)
+            if not data.get("CreatedOn"):
+                data["CreatedOn"] = datetime.now()
+            date_join = pd.to_datetime(data['date_of_joining'])
+            created_on = pd.to_datetime(data['CreatedOn'])
+            data['days_in_stage'] = (created_on - date_join).days
+
         data.pop('date_of_joining', None)
         data.pop('CreatedOn', None)
         return pd.DataFrame([data])
+
 
     def predict(self, input_data: InputData, threshold: float = 0.5):
         data_df = self.preprocess_data(input_data)

@@ -1,0 +1,143 @@
+{
+    "title": "jarir",
+    "type": "object",
+    "properties": {
+        "nationality": {
+            "enum": [
+                "Kingdom of Saudi Arabia",
+                "Yemen",
+                "Pakistan",
+                "Egypt",
+                "INDIA",
+                "Bangladesh",
+                "Sudan",
+                "Jordan",
+                "Philippines",
+                "Lebanon",
+                "Sri Lanka",
+                "Others",
+                "Kuwait",
+                "Afghanistan",
+                "Turkey",
+                "Palestine",
+                "Ghana",
+                "Morocco",
+                "Mali",
+                "Syria",
+                "Eritrea",
+                "Tunisia",
+                "Cameroon",
+                "Senegal",
+                "Somalia",
+                "Greece",
+                "South Africa",
+                "Indonesia",
+                "Nigeria",
+                "Nepal",
+                "Niger",
+                "Ethiopia",
+                "France",
+                "United Kingdom",
+                "Bahrain",
+                "Oman",
+                "Azerbaijan",
+                "Mauritania",
+                "Malaysia",
+                "Chad",
+                "Kyrgyz Republic",
+                "Russia",
+                "Venezuela",
+                "China",
+                "Netherlands",
+                "United States",
+                "Italy",
+                "Canada"
+            ],
+            "type": "string"
+        },
+        "age": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "sector": {
+            "enum": [
+                "GOV-MILITARY",
+                "NONSAUDI_PRIVT",
+                "GOV-NONMILITARY",
+                "PRIVT",
+                "NONSAUDI_GOV-NONMILITARY",
+                "RETMT",
+                "NULL"
+            ],
+            "type": "string"
+        },
+        "Gender": {
+            "enum": [
+                "M",
+                "F"
+            ],
+            "type": "string"
+        },
+        "simah_score": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "requested_loan_amount": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "basic_wage": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "total_allowance": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "housing_allowance": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "svr_jdg_count": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "svr_jdg_monthsincelastsettld": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "svr_defaultamount": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "days_in_stage": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        }
+    },
+    "required": [
+        "nationality",
+        "age",
+        "sector",
+        "Gender",
+        "simah_score",
+        "requested_loan_amount",
+        "basic_wage",
+        "total_allowance",
+        "housing_allowance",
+        "svr_jdg_count",
+        "svr_jdg_monthsincelastsettld",
+        "svr_defaultamount",
+        "days_in_stage"
+    ]
+}

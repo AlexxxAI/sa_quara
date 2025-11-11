@@ -42,8 +42,9 @@ class InputData(BaseModel):
     svr_jdg_count: float
     svr_defaultamount: float
     dbr_mal_bmo: float
-    date_of_joining: datetime
-    CreatedOn: datetime
+    days_in_stage: float
+    date_of_joining: Optional[datetime] = None
+    CreatedOn: Optional[datetime] = None
 
 class ScoreModel:
     def __init__(self, model_path: str = None):
@@ -60,9 +61,22 @@ class ScoreModel:
 
     def preprocess_data(self, input_data: InputData):
         data = input_data.dict()
-        date_join = data.pop("date_of_joining")
-        created_on = data.pop("CreatedOn")
-        data["days_in_stage"] = (created_on - date_join).days
+
+        # Если days_in_stage уже есть (и не None/NaN) — не пересчитываем
+        if data.get("days_in_stage") is not None and not np.isnan(data.get("days_in_stage")):
+            # Удаляем даты, если они не нужны
+            data.pop("date_of_joining", None)
+            data.pop("CreatedOn", None)
+        else:
+            # Нет days_in_stage — рассчитываем по датам
+            if not data.get("date_of_joining"):
+                data["date_of_joining"] = datetime(2023, 1, 1)
+            if not data.get("CreatedOn"):
+                data["CreatedOn"] = datetime.now()
+            date_join = data.pop("date_of_joining")
+            created_on = data.pop("CreatedOn")
+            data["days_in_stage"] = (created_on - date_join).days
+
         return pd.DataFrame([data])
 
     def predict(self, input_data: InputData, threshold: float = 0.5):

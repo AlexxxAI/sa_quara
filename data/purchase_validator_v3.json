@@ -1,0 +1,94 @@
+{
+    "title": "purchase",
+    "type": "object",
+    "properties": {
+        "age": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "simah_score": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "sector": {
+            "enum": [
+                "NONSAUDI_PRIVT",
+                "PRIVT",
+                "GOV-NONMILITARY",
+                "GOV-MILITARY",
+                "RETMT",
+                "NONSAUDI_GOV-NONMILITARY"
+            ],
+            "type": "string"
+        },
+        "income": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "dbr_ofo_amt": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "Gender": {
+            "enum": [
+                "M",
+                "F"
+            ],
+            "type": "string"
+        },
+        "requested_loan_amount": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "basic_wage": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "housing_allowance": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "svr_jdg_count": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "svr_defaultamount": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "dbr_mal_bmo": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        },
+        "days_in_stage": {
+            "type": "number",
+            "minimum": null,
+            "maximum": null
+        }
+    },
+    "required": [
+        "age",
+        "simah_score",
+        "sector",
+        "income",
+        "dbr_ofo_amt",
+        "Gender",
+        "requested_loan_amount",
+        "basic_wage",
+        "housing_allowance",
+        "svr_jdg_count",
+        "svr_defaultamount",
+        "dbr_mal_bmo",
+        "days_in_stage"
+    ]
+}
